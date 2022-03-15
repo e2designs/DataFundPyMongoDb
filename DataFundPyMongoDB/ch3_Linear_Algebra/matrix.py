@@ -27,6 +27,7 @@ import numpy as np
 
 
 def mult_scalar(m, s):
+    """Multiplies a matrix by a scalar"""
     matrix = np.empty(m.shape)
     m_shape = m.shape
     for i, v in enumerate(range(m_shape[0])):
@@ -37,6 +38,7 @@ def mult_scalar(m, s):
 
 
 def display(m):
+    """Displays matrix by row and each element in the row"""
     s = np.shape(m)
     cols = s[1]
     for i, row in enumerate(m):
@@ -47,16 +49,26 @@ def display(m):
 
 
 if __name__ == "__main__":
+    # Create 3 Vectors using lists
     v1, v2, v3 = [1, 7, -4], [2, -3, 10], [3, 5, 6]
+
+    # Add vectors to the matrix
     A = np.matrix([v1, v2, v3])
     print('matrix A:\n', A)
+
+    # Create new vectors using Matrix A and a Scalar
     scalar = 0.5
     B = mult_scalar(A, scalar)
     print('\nmatrix B:\n', B)
+
+    # Calculate mean by column
     mu_col = np.mean(A, axis=0, dtype=np.float64)
     print('\nmean A (column-wise):\n', mu_col)
+    # Calculate mean by Row
     mu_row = np.mean(A, axis=1, dtype=np.float64)
     print('\nmean A (row-wise):\n', mu_row)
+
+    # Create new matrix using numpy array
     print('\nmatrix C:')
     C = np.array([[2, 14, -8], [4, -6, 20], [6, 10, 12]])
     print(C)
